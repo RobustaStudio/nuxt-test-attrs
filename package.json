@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-test-attr",
+  "name": "nuxt-strip-test-attrs",
   "version": "0.1.0",
   "main": "dist/index.js",
   "author": "Abdelrahman Awad <logaretm1@gmail.com>",
