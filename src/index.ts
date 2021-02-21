@@ -7,8 +7,7 @@ interface StripTestAttrsOptions {
 
 const stripTestAttrs: Module<StripTestAttrsOptions> = function () {
   const { options } = this;
-  const moduleOptions: Partial<StripTestAttrsOptions> =
-    options.stripTestAttrs || {};
+  const moduleOptions: Partial<StripTestAttrsOptions> = options.testAttrs || {};
 
   // In dev mode, don't generate unless specified
   if (moduleOptions.strip === undefined && options.dev) {
@@ -46,7 +45,8 @@ export default stripTestAttrs;
 
 // https://github.com/LinusBorg/vue-cli-plugin-test-attrs/blob/develop/lib/index.js
 function stripModule({ attrs }: Partial<StripTestAttrsOptions>) {
-  let testAttrs = attrs || [];
+  const testAttrs = (attrs || []).map(mapAttrs);
+
   return {
     preTransformNode(astEl: any) {
       const { attrsMap, attrsList } = astEl;
@@ -73,4 +73,15 @@ function stripModule({ attrs }: Partial<StripTestAttrsOptions>) {
       return astEl;
     },
   };
+}
+
+/**
+ * Removes the `data-` prefix to avoid bugs
+ */
+function mapAttrs(attr: string) {
+  if (attr && attr.startsWith('data-')) {
+    return attr.replace('data-', '');
+  }
+
+  return attr;
 }
