@@ -32,7 +32,7 @@ Add this module to the `buildModules` section in your `nuxt.config.js`:
 }
 ```
 
-Configure the module (Optional):
+Configure the module:
 
 Add `testAttrs` config object to `nuxt.config.js`
 
@@ -40,8 +40,8 @@ Add `testAttrs` config object to `nuxt.config.js`
 {
   // ...
   testAttrs: {
-    strip: true,
-    attrs: ['test-id'],
+    attrs: ['test-id'], // required
+    strip: process.env.NODE_ENV === 'production', // optional, this is the default
   },
 }
 ```
