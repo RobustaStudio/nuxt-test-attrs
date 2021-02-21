@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "lib": ["es2020", "DOM"],
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "dist/",
+    "removeComments": true,
+    "strict": true,
+    "baseUrl": ".",
+    "types": ["@types/node", "@nuxt/types"]
+  },
+  "files": ["src/index.ts"],
+  "exclude": ["node_modules"]
+}
