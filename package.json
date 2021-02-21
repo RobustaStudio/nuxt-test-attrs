@@ -1,15 +1,16 @@
 {
   "name": "nuxt-test-attr",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Abdelrahman Awad <logaretm1@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {
-    "@nuxtjs/composition-api": "^0.20.2"
-  },
+  "dependencies": {},
+  "files": [
+    "dist/*.js"
+  ],
   "devDependencies": {
     "@nuxt/types": "^2.15.1",
     "@types/node": "^14.14.31",

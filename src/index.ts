@@ -1,11 +1,11 @@
-import { defineNuxtModule } from '@nuxtjs/composition-api';
+import { Module } from '@nuxt/types';
 
 interface StripTestAttrsOptions {
   strip: boolean;
   attrs: string[];
 }
 
-export default defineNuxtModule(function stripTestAttrs() {
+const stripTestAttrs: Module<StripTestAttrsOptions> = function () {
   const { options } = this;
   const moduleOptions: Partial<StripTestAttrsOptions> =
     options.stripTestAttrs || {};
@@ -40,7 +40,9 @@ export default defineNuxtModule(function stripTestAttrs() {
 
   const modules = compilerOptions.modules;
   modules.push(stripModule(moduleOptions) as any);
-});
+};
+
+export default stripTestAttrs;
 
 // https://github.com/LinusBorg/vue-cli-plugin-test-attrs/blob/develop/lib/index.js
 function stripModule({ attrs }: Partial<StripTestAttrsOptions>) {
